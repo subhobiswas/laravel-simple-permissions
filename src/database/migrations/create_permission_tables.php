@@ -31,6 +31,13 @@ return new class extends Migration
                 $table->foreignId('permission_id')->constrained()->onDelete('cascade');
             });
         }
+
+        if (!Schema::hasTable('users')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null');
+            });
+        }
+
     }
 
     public function down()
@@ -38,5 +45,8 @@ return new class extends Migration
         Schema::dropIfExists('role_permission');
         Schema::dropIfExists('permissions');
         Schema::dropIfExists('roles');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['role_id']);
+        });
     }
 };
