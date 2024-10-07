@@ -31,5 +31,12 @@
         "test": "phpunit",
         "format": "php-cs-fixer fix --allow-risky=yes",
         "analyse": "phpstan analyse"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lazycode\\Permissions\\PermissionsServiceProvider"
+            ]
+        }
     }
 }
