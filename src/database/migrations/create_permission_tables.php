@@ -32,10 +32,12 @@ return new class extends Migration
             });
         }
 
-        if (!Schema::hasTable('users')) {
-            Schema::table('users', function (Blueprint $table) {
-                $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null');
-            });
+        if (Schema::hasTable('users')) {
+            if (!Schema::hasColumn('users', 'role_id')) {
+                Schema::table('users', function (Blueprint $table) {
+                    $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null');
+                });
+            }
         }
 
     }
@@ -45,8 +47,11 @@ return new class extends Migration
         Schema::dropIfExists('role_permission');
         Schema::dropIfExists('permissions');
         Schema::dropIfExists('roles');
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['role_id']);
-        });
+        if (Schema::hasTable('users') && Schema::hasColumn('users', 'role_id')) {
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropForeign(['role_id']);
+                $table->dropColumn('role_id');
+            });
+        }
     }
 };
