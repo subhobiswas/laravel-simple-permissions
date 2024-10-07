@@ -10,14 +10,12 @@
     ],
     "require": {
         "php": ">=7.4",
-        "illuminate/support": "^9.0",
-        "illuminate/database": "^9.0",
-        "illuminate/auth": "^9.0"
+        "laravel/framework": "^10.10"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Lazycode\\Permissions \\": "src/"
+            "Lazycode\\Permissions\\": "src/"
         }
     },
     "authors": [
