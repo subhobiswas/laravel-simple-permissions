@@ -7,7 +7,7 @@ A simple Laravel package for handling roles and permissions. This package allows
 To install the package, run the following command:
 
 ```bash
-composer require lazycode/laravel-simple-permissions:@dev
+composer require lazycode/laravel-simple-permissions
 ```
 ### Publish Configuration
 After installing the package, publish the configuration file using:
