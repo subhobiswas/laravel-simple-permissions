@@ -35,7 +35,7 @@ return new class extends Migration
         if (Schema::hasTable('users')) {
             if (!Schema::hasColumn('users', 'role_id')) {
                 Schema::table('users', function (Blueprint $table) {
-                    $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null');
+                    $table->foreignId('role_id')->nullable()->constrained('roles')->onDelete('set null')->after('id');;
                 });
             }
         }

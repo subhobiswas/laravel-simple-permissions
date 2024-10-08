@@ -78,21 +78,14 @@ IN blade.php
 ```
 
 ### Functions List
-`role`: Return the Role collection of modal.
-
-`hasRole` `@hasRole` : Check Loggedin User has the role.
-
-`hasAnyRole` `@hasAnyRole` : Checks if the user has any of the specified roles.
-
-`permission`: Get the permission collection from permission modal.
-
-`@hasPermission` `@haspermission`: Check Loggedin user has the permission.
-
-`hasAnyPermission` `@hasAnyPermission`: Checks if the user has any of the specified permissions.
-
-`hasAllPermission` `@hasAllPermission`: Verifies that the user has all the specified permissions.
-
-`hasExactPermissions` `@hasExactPermissions`: Checks if the user has exactly the specified permissions.
+- `role` : Return the Role collection of modal.
+- `hasRole` `@hasRole` : Check Loggedin User has the role.
+- `hasAnyRole` `@hasAnyRole` : Checks if the user has any of the specified roles.
+- `permission` : Get the permission collection from permission modal.
+- `@hasPermission` `@haspermission` : Check Loggedin user has the permission.
+- `hasAnyPermission` `@hasAnyPermission` : Checks if the user has any of the specified permissions.
+- `hasAllPermission` `@hasAllPermission` : Verifies that the user has all the specified permissions.
+- `hasExactPermissions` `@hasExactPermissions` : Checks if the user has exactly the specified permissions.
 
 ## Seeding Roles and Permissions
 You can create a seeder to start with some default roles and permissions. For example:
@@ -128,10 +121,10 @@ class RolesAndPermissionsSeeder extends Seeder
 ## Database Schema
 Ensure your database schema is set up correctly. The following tables should exist:
 
-- `roles`: To store roles.
-- `permissions`: To store permissions.
-- `role_permission`: Pivot table to manage many-to-many relationships between roles and permissions.
-- `users`: Ensure there is a `role_id` column in the `users` table to associate users with their roles.
+- `roles` : To store roles.
+- `permissions` : To store permissions.
+- `role_permission` : Pivot table to manage many-to-many relationships between roles and permissions.
+- `users` : Ensure there is a `role_id` column in the `users` table to associate users with their roles.
 
 ## Conclusion
 This package provides a simple way to manage user roles and permissions in your Laravel application. For further customization or additional features, feel free to contribute or reach out for support.
