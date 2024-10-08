@@ -54,7 +54,7 @@ To assign a role to a user:
 
 ```php
 $user = User::find(1); // Replace with the appropriate user ID
-$user->assignRoleByName('Admin');
+$user->assignRole('Admin');
 ```
 
 #### Get User's Role
@@ -69,7 +69,30 @@ To check if a user has a specific permission:
 if ($user->hasPermission('edit-user')) {
     // The user has permission to edit a user
 }
+
+IN blade.php
+
+@hasPermission('edit-user')
+    {{ show the content if user has this permission }}
+@endhasPermission
 ```
+
+### Functions List
+`role`: Return the Role collection of modal.
+
+`hasRole` `@hasRole` : Check Loggedin User has the role.
+
+`hasAnyRole` `@hasAnyRole` : Checks if the user has any of the specified roles.
+
+`permission`: Get the permission collection from permission modal.
+
+`@hasPermission` `@haspermission`: Check Loggedin user has the permission.
+
+`hasAnyPermission` `@hasAnyPermission`: Checks if the user has any of the specified permissions.
+
+`hasAllPermission` `@hasAllPermission`: Verifies that the user has all the specified permissions.
+
+`hasExactPermissions` `@hasExactPermissions`: Checks if the user has exactly the specified permissions.
 
 ## Seeding Roles and Permissions
 You can create a seeder to start with some default roles and permissions. For example:
@@ -97,7 +120,7 @@ class RolesAndPermissionsSeeder extends Seeder
 
         // Create a user and assign the role
         $user = User::create(['name' => 'Admin User', 'email' => 'admin@example.com', 'password' => bcrypt('password')]);
-        $user->assignRoleByName('Admin');
+        $user->assignRole('Admin');
     }
 }
 ```
@@ -112,5 +135,3 @@ Ensure your database schema is set up correctly. The following tables should exi
 
 ## Conclusion
 This package provides a simple way to manage user roles and permissions in your Laravel application. For further customization or additional features, feel free to contribute or reach out for support.
-
-

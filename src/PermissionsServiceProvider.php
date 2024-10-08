@@ -32,16 +32,14 @@ class PermissionsServiceProvider extends ServiceProvider
         };
 
         // Role checks
-        $bladeCompiler->if('role', fn() => $bladeMethodWrapper('hasRole', ...func_get_args()));
-        $bladeCompiler->if('hasrole', fn() => $bladeMethodWrapper('hasRole', ...func_get_args()));
-        $bladeCompiler->if('hasanyrole', fn() => $bladeMethodWrapper('hasAnyRole', ...func_get_args()));
+        $bladeCompiler->if('hasRole', fn() => $bladeMethodWrapper('hasRole', ...func_get_args()));
+        $bladeCompiler->if('hasAnyRole', fn() => $bladeMethodWrapper('hasAnyRole', ...func_get_args()));
 
         // Permission checks
-        $bladeCompiler->if('permission', fn() => $bladeMethodWrapper('hasPermission', ...func_get_args()));
-        $bladeCompiler->if('haspermission', fn() => $bladeMethodWrapper('hasPermission', ...func_get_args()));
-        $bladeCompiler->if('hasanypermission', fn() => $bladeMethodWrapper('hasAnyPermission', ...func_get_args()));
-        $bladeCompiler->if('hasallpermissions', fn() => $bladeMethodWrapper('hasAllPermissions', ...func_get_args()));
-        $bladeCompiler->if('hasexactpermissions', fn() => $bladeMethodWrapper('hasExactPermissions', ...func_get_args()));
+        $bladeCompiler->if('hasPermission', fn() => $bladeMethodWrapper('hasPermission', ...func_get_args()));
+        $bladeCompiler->if('hasAnyPermission', fn() => $bladeMethodWrapper('hasAnyPermission', ...func_get_args()));
+        $bladeCompiler->if('hasAllPermissions', fn() => $bladeMethodWrapper('hasAllPermissions', ...func_get_args()));
+        $bladeCompiler->if('hasExactPermissions', fn() => $bladeMethodWrapper('hasExactPermissions', ...func_get_args()));
 
         // Ending directive for permissions
         $bladeCompiler->directive('endunlesspermission', fn() => '<?php endif; ?>');
@@ -60,3 +58,4 @@ class PermissionsServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/config/permissions.php', 'permissions'); // Ensure this matches the config file
     }
 }
+
